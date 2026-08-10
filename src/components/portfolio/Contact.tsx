@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { ArrowUp, Github, Linkedin, Mail, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal, SectionHeading } from "./Reveal";
@@ -172,9 +172,12 @@ export function Footer() {
 export function BackToTop() {
   const [show, setShow] = useState(false);
 
-  if (typeof window !== "undefined") {
-    window.onscroll = () => setShow(window.scrollY > 600);
-  }
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <button
