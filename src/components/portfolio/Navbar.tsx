@@ -73,7 +73,7 @@ export function Navbar() {
         </nav>
 
         {open ? (
-          <ul className="animate-fade-in border-t border-border bg-background/95 px-5 pb-5 pt-2 backdrop-blur-xl lg:hidden">
+          <ul className="border-t border-border bg-background/95 px-5 pb-5 pt-2 backdrop-blur-xl lg:hidden">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <a
